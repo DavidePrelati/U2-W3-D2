@@ -15,6 +15,7 @@ const savePerson = () => {
         let person = JSON.parse(localStorage.getItem("savedPerson")) || [];
         person.push({ name, surname });
         localStorage.setItem("savedPerson", JSON.stringify(person));
+        console.log(person)
         displayPerson();
     } else {
         alert("Inserisci un nome e un cognome validi.");
@@ -27,6 +28,7 @@ const removePerson = () => {
         person.pop();
         localStorage.setItem("savedPerson", JSON.stringify(person));
         displayPerson();
+        console.log(person)
     } else {
         alert("Non ci sono dati da rimuovere.");
     }
