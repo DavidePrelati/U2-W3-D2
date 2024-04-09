@@ -1,9 +1,19 @@
+const displayPerson = () => {
+    const savedPerson = JSON.parse(localStorage.getItem("savedPerson")) || [];
+    const savedPersonDiv = document.getElementById("savedPerson");
+    savedPersonDiv.innerHTML = "";
+    savedPerson.forEach(entry => {
+        const container = document.createElement("div");
+        container.textContent = `Nome: ${entry.name}, Cognome: ${entry.surname}`;
+        savedPersonDiv.appendChild(container);
+    });
+};
 const savePerson = () => {
     const name = document.getElementById("nameInput").value.trim();
     const surname = document.getElementById("surnameInput").value.trim();
     if (name !== "" && surname !== "") {
         let person = JSON.parse(localStorage.getItem("savedPerson")) || [];
-        person.push({name, surname});
+        person.push({ name, surname });
         localStorage.setItem("savedPerson", JSON.stringify(person));
         displayPerson();
     } else {
@@ -11,16 +21,6 @@ const savePerson = () => {
     }
 };
 
-const displayPerson = () => {
-    const savedPerson = JSON.parse(localStorage.getItem("savedPerson")) || [];
-    const savedPersonDiv = document.getElementById("savedPerson");
-    savedPersonDiv.innerHTML = "";
-    savedPerson.forEach(entry => {
-        const entryElement = document.createElement("div");
-        entryElement.textContent = `Nome: ${entry.name}, Cognome: ${entry.surname}`;
-        savedPersonDiv.appendChild(entryElement);
-    });
-};
 const removePerson = () => {
     let person = JSON.parse(localStorage.getItem("savedPerson")) || [];
     if (person.length > 0) {
