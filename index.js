@@ -33,9 +33,7 @@ const removePerson = () => {
 };
 
 
-window.onload = () => {
-    displayPerson();
-};
+
 
 document.getElementById("saveButton").addEventListener("click", savePerson);
 document.getElementById("removeButton").addEventListener("click", removePerson);
